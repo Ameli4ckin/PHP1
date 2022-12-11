@@ -1,17 +1,21 @@
 <?php
 
 define("TASK", "Какая задача стоит перед вами сегодня? \n");
-define("TASK_TIMING", "Сколько примерно времени эта задача займет? \n");
+define("TASK_TIME", "Сколько примерно времени эта задача займет? \n");
 $strTask = "";
 $taskSumTime = 0;
 
-$taskCount=(int)readline("Введите количество задач, запланированных на день\n");
+do {
+    $taskCount = (int)readline(
+        "Введите количество задач, запланированных на день\n");
+} while ($taskCount <= 0);
 
-for ($i=1; $i<=$taskCount; $i++){
+for ($i=1; $i <= $taskCount; $i++){
     $task=readline(TASK);
+    $taskTime=(int)readline(TASK_TIME);
+
     $strTask .= "$i: $task ";
-    $taskTime=(int)readline(TASK_TIMING);
-    $strTask .= "(${taskTime}ч) \n";
+    $strTask .= "({$taskTime}ч) \n";
     $taskSumTime += $taskTime;
 }
 

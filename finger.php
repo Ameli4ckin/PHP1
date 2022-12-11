@@ -1,8 +1,12 @@
 <?php
 
-$userNum=(int)readline("Введите число \n");
-$i=$userNum%8;
-switch (true){
+do {
+    $userNum = (int)readline("Введите число \n");
+} while ($userNum <= 0);
+
+$i = $userNum % 8;
+
+switch (true) {
     case $i == 1:
         $finger = 1;
         break;
@@ -19,4 +23,5 @@ switch (true){
         $finger = 5;
         break;
 }
+
 echo "Палец номер $finger";
