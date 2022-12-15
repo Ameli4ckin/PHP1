@@ -5,12 +5,19 @@
 
 $arr1 = [2, 4 , 6 , 8 , 10, 12 , 14, 16, 18, 20];
 $arr2 = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+$multiple = [];
 
-$length = (count($arr1) > count($arr2)) ? count($arr1) : count($arr2);
-
-for ($i = 0; $i < $length; $i++){
-    $result = $arr1[$i] * $arr2[$i];
-    $resultArr[] = $result;
+foreach ($arr1 as $key => $value) {
+    $multiple[] = ($arr1[$key] * $arr2[$key]);
 }
 
-print_r($resultArr);
+print_r($multiple);
+
+//Вариант №2:
+
+// for ($i = 0; $i < 9; $i++){
+//     $result = $arr1[$i] * $arr2[$i];
+//     $resultArr[] = $result;
+// }
+
+// print_r($resultArr);

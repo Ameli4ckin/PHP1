@@ -5,7 +5,7 @@
 // Вычислить арифметическое среднее по всем оценкам в рамках группы. Вывести на экран название группы с самым большим вычисленным значением успеваемости;
 // Составить список на отчисление, в который попадают студенты из любой группы, имеющие оценку ниже трёх. В списке студенты должны быть сгруппированы по их группе. Выведите полученные данные в консоль, с помощью функции print_r;
 
-$students = [
+$studentsList = [
     'ИТ20' => [
         'Иванов Иван' => 2,
         'Кириллов Кирилл' => 5,
@@ -22,16 +22,22 @@ $students = [
     ]
 ];
 
-$sumMark1 = array_sum($students['ИТ20']) / count($students['ИТ20']);
-$sumMark2 = array_sum($students['БАП20']) / count($students['БАП20']);
+$exclude = [];
+$averageGrade = [];
 
-$groupWin = ($sumMark1 > $sumMark2) ? "ИТ20" : "БАП20";
+foreach ($studentsList as $group => $groups) {
+    $averageGrade[$group] = array_sum($groups) / count($groups);
 
-echo "Cамое большое значением успеваемости у группы $groupWin \n"; 
-echo "Список на отчисление: \n";
-$expulsion = [
-    'ИТ20' => [(array_keys($students['ИТ20'], 2))],
-    'БАП20' => [(array_keys($students['БАП20'], 2))]
-];
+    foreach ($groups as $studentName => $ball) {
+        if ($ball < 3) {
+            $exclude[$group][] = $studentName;
+        }
+    }
+}
 
-print_r($expulsion);
+$topGroup = array_keys($averageGrade, max($averageGrade))[0];
+
+echo "Наивысший балл у группы: \n $topGroup = $averageGrade[$topGroup];" . PHP_EOL;
+echo "Список студентов на отчисление: " . PHP_EOL;
+
+print_r($exclude);
