@@ -6,7 +6,7 @@ $arr = range(1, 20);
 
 $result = array_map(function(float $el): string
 {
-    return $el % 2 == 0 ?"$el - Четное" :"$el - Нечетное"; 
+    return $el % 2 == 0 ?"Четное" :"Нечетное"; 
     // второй вариант проверки на четность:
     // return $el & 1 == true ?"$el - Нечетное" :"$el - Четное"; 
 }, $arr);

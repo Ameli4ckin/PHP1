@@ -6,14 +6,11 @@ $arr = [2, 6, 13, 17, 24, 29, 33, 9, 79, 11, 88, 54, 44];
 
  function result(array $someArr): array
 {
-    foreach ($someArr as $avg) {
-        $avg = round(array_sum($someArr) / count($someArr), 2);
-    }
     return [
         'max' => max($someArr),
         'min' => min($someArr),
-        'avg' => $avg
+        'avg' => array_sum($someArr) / count($someArr)
     ];
-};
+}
 
 print_r(result($arr));
