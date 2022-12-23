@@ -4,7 +4,7 @@
 
 $arr = [2, 6, 13, 17, 24, 29, 33, 9, 79, 11, 88, 54, 44];
 
- function result(array $someArr): array
+function result(array $someArr): array
 {
     return [
         'max' => max($someArr),
